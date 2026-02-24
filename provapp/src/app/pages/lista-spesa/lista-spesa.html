@@ -1,0 +1,39 @@
+```html
+<div class="card">
+  <div class="spesa-header">
+    <h1>Lista della spesa</h1>
+    <div>
+      <button class="btn btn-primary" (click)="clearAll()">Svuota</button>
+    </div>
+  </div>
+
+  <form class="spesa-form" (ngSubmit)="addItem()">
+    <input
+        [value]="newItem()"
+        (input)="newItem.set($any($event.target).value)"
+        placeholder="Es. Latte, Pane..."
+        required
+    />
+    <button class="btn btn-primary" type="submit">Aggiungi</button>
+  </form>
+
+  @if (error()) {
+      <p class="muted">{{ error() }}</p>
+  }
+
+  @if (items().length === 0) {
+      <p class="muted">Nessun elemento nella lista.</p>
+  } @else {
+      <ul class="spesa-list">
+      @for (item of items(); track item) {
+          <li class="spesa-item">
+            <span>{{ item }}</span>
+            <div class="meta">
+              <button class="btn btn-ghost" (click)="removeItem(item)">Rimuovi</button>
+            </div>
+          </li>
+      }
+      </ul>
+  }
+</div>
+```

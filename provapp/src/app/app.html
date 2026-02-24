@@ -1,0 +1,35 @@
+<header class="app-header">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">P</div>
+    <h1>ProvApp</h1>
+  </div>
+
+  <nav class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }">Home</a>
+    @if (auth.isLoggedIn()) {
+      <a routerLink="/profile" routerLinkActive="active">Profile</a>
+      <a routerLink="/spesa" routerLinkActive="active">Lista spesa</a>
+    }
+  </nav>
+
+  <div class="space-between" style="gap:12px">
+    @if (auth.isLoggedIn()) {
+      <span class="muted">{{ auth.getUsername() }}</span>
+      <button class="btn btn-ghost" (click)="auth.logout()">Logout</button>
+    } @else {
+      <button class="btn btn-primary" (click)="auth.login()">Login</button>
+    }
+  </div>
+</header>
+
+<main class="app-container">
+  <div class="app-main">
+    <section class="content">
+      <router-outlet />
+    </section>
+    <aside class="app-sidebar">
+      <div class="card">Sidebar content</div>
+    </aside>
+  </div>
+  <footer class="footer">© {{ new Date().getFullYear() }} ProvApp</footer>
+</main>

@@ -1,0 +1,19 @@
+```html
+<div class="profile-card">
+  <div class="avatar">{{ auth.getUsername() | slice:0:1 }}</div>
+  <div class="profile-info">
+    <h2>{{ auth.getUsername() }}</h2>
+    <p class="muted">Utente autenticato</p>
+    <div class="profile-actions">
+      <button class="btn btn-primary" (click)="auth.refresh()">Aggiorna</button>
+      <button class="btn btn-ghost" (click)="auth.logout()">Logout</button>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:18px" class="card">
+  <h2 class="card-title">JWT Token</h2>
+  <code style="word-break: break-all;display:block;padding:12px;border-radius:8px;background:#f8fafc">{{ auth.getToken() }}</code>
+  <p class="muted" style="margin-top:8px">Puoi decodificarlo su <a href="https://jwt.io" target="_blank">jwt.io</a></p>
+</div>
+```

@@ -1,0 +1,31 @@
+```html
+<div class="home-hero">
+  <div class="hero-left">
+    <h1 class="hero-title">Benvenuto in ProvApp</h1>
+    <p class="hero-sub">Gestisci rapidamente la tua lista della spesa e il profilo.</p>
+    <p *ngIf="!auth.isLoggedIn()" style="margin-top:12px">Benvenuto! Fai login per accedere al profilo</p>
+    <p *ngIf="auth.isLoggedIn()" style="margin-top:12px">Sei autenticato come <strong>{{ auth.getUsername() }}</strong></p>
+  </div>
+  <div class="center">
+    <div class="card" style="max-width:260px;padding:18px;text-align:center">
+      <div class="avatar">{{ auth.isLoggedIn() ? (auth.getUsername() | slice:0:1) : 'G' }}</div>
+      <p class="muted" style="margin-top:8px">Profilo rapido</p>
+    </div>
+  </div>
+</div>
+
+<div class="dashboard-grid" style="margin-top:18px">
+  <div class="stat-card">
+    <div class="stat-value">—</div>
+    <div class="stat-label">Elementi nella lista</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">—</div>
+    <div class="stat-label">Ultima attività</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">—</div>
+    <div class="stat-label">Account</div>
+  </div>
+</div>
+```
